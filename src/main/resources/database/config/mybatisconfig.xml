@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+    <!-- 타입 별칭 설정 -->
+    <typeAliases>
+        <!-- NoticeVO 클래스에 대한 별칭 설정 -->
+        <typeAlias type="com.winter.app.notice.NoticeVO" alias="NoticeVO"/>
+    </typeAliases>  	  
+</configuration>
