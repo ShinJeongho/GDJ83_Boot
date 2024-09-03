@@ -30,6 +30,7 @@
         </c:forEach>
     </tbody>
     </table>
+    <a href="./add">Add</a>
 
 
 </body>

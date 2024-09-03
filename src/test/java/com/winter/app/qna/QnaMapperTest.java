@@ -16,6 +16,16 @@ class QnaMapperTest {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
+	
+	@Test
+	void getDetailTest()throws Exception{
+		QnaVO qnaVO = new QnaVO();
+		qnaVO.setBoardNum(110L);
+		qnaVO=qnaMapper.getDetail(qnaVO);
+		
+		assertNotNull(qnaVO);
+	}
+	
 //	@Test
 //	void addTest()throws Exception{
 //		for(int i=5;i<110;i++) {
