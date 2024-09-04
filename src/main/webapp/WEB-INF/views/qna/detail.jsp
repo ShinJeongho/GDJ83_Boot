@@ -13,8 +13,13 @@
 	<h3>${vo.boardWriter}</h3>
 	<h3>${vo.boardContents}</h3>
 	
-	<c:forEach items="${vo.ar}" var="f">
+	<%-- <c:forEach items="${vo.ar}" var="f">
 		<img src="/files/${board}/${f.fileName}">
+		<a href="./fileDown?fileNum=${f.fileNum}">${f.oriName}</a>
+	</c:forEach>
+	 --%>
+	<c:forEach items="${vo.ar}" var="f">
+		<a href="./fileDown?fileNum=${f.fileNum}"><img src="/files/${board}/${f.fileName}"></a>
 	</c:forEach>
 	
 	
