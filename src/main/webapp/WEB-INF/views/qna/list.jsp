@@ -23,7 +23,7 @@
         <c:forEach var="qna" items="${list}">
             <tr>
                 <td>${qna.boardNum}</td>
-                <td>${qna.boardTitle}</td>
+                <td><a href="./detail?boardNum=${qna.boardNum}">${qna.boardTitle}</a></td>
                 <td>${qna.boardWriter}</td>
                 <td>${qna.createDate}</td>
             </tr>
