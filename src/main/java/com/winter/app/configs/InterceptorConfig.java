@@ -12,22 +12,22 @@ import com.winter.app.home.Interceptors.LoginInterceptor;
 public class InterceptorConfig implements WebMvcConfigurer{
 	
 	@Autowired
-	private LoginInterceptor loginInterceptor;
+	private LoginInterceptor loginInterceptor; // 로그인 체크 인터셉터 주입
 	
 	@Autowired
-	private AdminCheckInterceptor adminCheckInterceptor;
+	private AdminCheckInterceptor adminCheckInterceptor; // 관리자 권한 체크 인터셉터 주입
+
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		//어떤 url이 왔을때 어떤 Interceptorfmf 실행 할 것인가?
-		// /qna/list -> 로그인 Interceptor 
+		// 로그인 인터셉터를 /qna/* 경로에 적용하되 /qna/list는 예외 처리
 		registry.addInterceptor(loginInterceptor)
-				.addPathPatterns("/qna/*")
-				.excludePathPatterns("/qna/list");
+				.addPathPatterns("/qna/*") // /qna/* 경로에서 실행
+				.excludePathPatterns("/qna/list"); // /qna/list는 제외
 		
-		// 관리자 권한이 필요한 경로에 AdminCheckInterceptor 적용
+		 // 관리자 권한 체크 인터셉터를 /admin/** 경로에 적용
         registry.addInterceptor(adminCheckInterceptor)
-                .addPathPatterns("/admin/**"); // /admin/** 경로는 관리자만 접근 가능
+                .addPathPatterns("/admin/**"); // /admin/** 경로에서 실행
     }
 		
 	}
