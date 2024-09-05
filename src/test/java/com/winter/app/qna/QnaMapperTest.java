@@ -7,17 +7,21 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.winter.app.util.Pager;
 
 
 @SpringBootTest
+@Transactional //모든 테스트 메서드 실행후 전부 롤백처리
 class QnaMapperTest {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
 	
 	@Test
+	@Rollback(false) //메서드 실행후 롤백처리 안함 
 	void getDetailTest()throws Exception{
 		QnaVO qnaVO = new QnaVO();
 		qnaVO.setBoardNum(110L);
@@ -26,23 +30,23 @@ class QnaMapperTest {
 		assertNotNull(qnaVO);
 	}
 	
-//	@Test
-//	void addTest()throws Exception{
-//		for(int i=5;i<110;i++) {
-//		QnaVO qnaVO = new QnaVO();
-//		qnaVO.setBoardContents("c3"+i);
-//		qnaVO.setBoardTitle("t3"+i);
-//		qnaVO.setBoardWriter("w3"+i);
-//		qnaVO.setRef((long)i);
-//		qnaVO.setStep(0L);
-//		qnaVO.setDepth(0L);
-//		int result =qnaMapper.add(qnaVO);
-//		if(i%10==0) {
-//			Thread.sleep(500);
-//		}
-//	}
-//		
-//	}
+	@Test
+	void addTest()throws Exception{
+		for(int i=5;i<110;i++) {
+		QnaVO qnaVO = new QnaVO();
+		qnaVO.setBoardContents("c3"+i);
+		qnaVO.setBoardTitle("t3"+i);
+		qnaVO.setBoardWriter("w3"+i);
+		qnaVO.setRef((long)i);
+		qnaVO.setStep(0L);
+		qnaVO.setDepth(0L);
+		int result =qnaMapper.add(qnaVO);
+		if(i%10==0) {
+			Thread.sleep(500);
+		}
+	}
+		
+	}
 
 	@Test
 	void getListTest() throws Exception {
