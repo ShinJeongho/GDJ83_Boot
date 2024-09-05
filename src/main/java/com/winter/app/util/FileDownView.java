@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class FileDownView extends AbstractView {
+public class FileDownView extends AbstractView { //리턴할떄 대문자 이름을 소문자로 바꿔서 찾아서 일로옴 없으면 jsp로감 뷰에관련된 클래스
 	@Value("${app.upload}")
 	private String path; //D:upload/
 	
