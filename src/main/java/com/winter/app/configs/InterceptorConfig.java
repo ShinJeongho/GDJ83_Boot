@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.winter.app.home.Interceptors.AdminCheckInterceptor;
 import com.winter.app.home.Interceptors.LoginInterceptor;
@@ -16,6 +17,9 @@ public class InterceptorConfig implements WebMvcConfigurer{
 	
 	@Autowired
 	private AdminCheckInterceptor adminCheckInterceptor; // 관리자 권한 체크 인터셉터 주입
+	
+	@Autowired
+	private LocaleChangeInterceptor localeChangeInterceptor;
 
 
 	@Override
@@ -28,6 +32,10 @@ public class InterceptorConfig implements WebMvcConfigurer{
 		 // 관리자 권한 체크 인터셉터를 /admin/** 경로에 적용
         registry.addInterceptor(adminCheckInterceptor)
                 .addPathPatterns("/admin/**"); // /admin/** 경로에서 실행
+        
+        
+        registry.addInterceptor(localeChangeInterceptor)
+        		.addPathPatterns("/**");
     }
 		
 	}
