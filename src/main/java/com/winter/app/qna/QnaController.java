@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.util.Pager;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -42,12 +44,16 @@ public class QnaController {
     }
  // QnA 게시글 작성 화면 제공 (GET 요청)
     @GetMapping("add")
-    public void add()throws Exception {
+    public void add(@ModelAttribute QnaVO qnaVO)throws Exception {
     	
     }
  // QnA 게시글 작성 처리 (POST 요청)
     @PostMapping("add")
-    public String add(QnaVO qnaVO, MultipartFile [] attaches)throws Exception{
+    public String add(@Valid QnaVO qnaVO, BindingResult bindingResult, MultipartFile [] attaches)throws Exception{
+    	if(bindingResult.hasErrors()) {
+    		log.error("writer가 비어있습니다");
+    		return "qna/add";
+    	}
     	int result = qnaService.add(qnaVO, attaches); // 게시글 및 첨부파일 저장 처리
     	return "redirect:./list"; // 작성 완료 후 목록으로 리다이렉트
     }

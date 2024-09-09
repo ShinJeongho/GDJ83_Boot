@@ -25,9 +25,9 @@ public class InterceptorConfig implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 로그인 인터셉터를 /qna/* 경로에 적용하되 /qna/list는 예외 처리
-		registry.addInterceptor(loginInterceptor)
-				.addPathPatterns("/qna/*") // /qna/* 경로에서 실행
-				.excludePathPatterns("/qna/list"); // /qna/list는 제외
+//		registry.addInterceptor(loginInterceptor)
+//				.addPathPatterns("/qna/*") // /qna/* 경로에서 실행
+//				.excludePathPatterns("/qna/list"); // /qna/list는 제외
 		
 		 // 관리자 권한 체크 인터셉터를 /admin/** 경로에 적용
         registry.addInterceptor(adminCheckInterceptor)
