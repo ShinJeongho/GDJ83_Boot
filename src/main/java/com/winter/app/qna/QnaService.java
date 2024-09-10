@@ -48,6 +48,7 @@ public class QnaService {
 				
 		 // 첨부파일 처리		
 		//파일을 hdd에 저장후 db에 정보를 추가
+		if(attaches != null) {
 		for(MultipartFile mf: attaches) {
 		if(mf==null || mf.isEmpty()) {
 			continue; // 파일이 비어있으면 처리하지 않음
@@ -62,7 +63,9 @@ public class QnaService {
 		result= qnaMapper.addFile(qnaFileVO);// 파일 정보 DB에 저장
 		
 		}
-		return 0;
+		
+	}
+		return result;
 	}
 	// QnA 게시글 상세 조회
 	public QnaVO getDetail(QnaVO qnaVO)throws Exception{

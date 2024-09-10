@@ -28,10 +28,10 @@ public class InterceptorConfig implements WebMvcConfigurer{
 //		registry.addInterceptor(loginInterceptor)
 //				.addPathPatterns("/qna/*") // /qna/* 경로에서 실행
 //				.excludePathPatterns("/qna/list"); // /qna/list는 제외
-		
-		 // 관리자 권한 체크 인터셉터를 /admin/** 경로에 적용
-        registry.addInterceptor(adminCheckInterceptor)
-                .addPathPatterns("/admin/**"); // /admin/** 경로에서 실행
+//		
+//		 // 관리자 권한 체크 인터셉터를 /admin/** 경로에 적용
+//        registry.addInterceptor(adminCheckInterceptor)
+//                .addPathPatterns("/admin/**"); // /admin/** 경로에서 실행
         
         
         registry.addInterceptor(localeChangeInterceptor)

@@ -68,19 +68,19 @@ public class MemberController {
 	@GetMapping("login")
 	public void login()throws Exception {}
 	
-	// 로그인 처리 (POST 요청)
-	@PostMapping("login")
-	public String login(MemberVO memberVO, HttpSession session)throws Exception {
-		memberVO = memberService.detail(memberVO); // 로그인 처리
-		
-		// 로그인 성공 시 세션에 사용자 정보 저장
-		if(memberVO != null) {
-			session.setAttribute("member", memberVO);
-		}
-		
-		
-		return "redirect:../"; // 로그인 성공 후 홈 페이지로 리다이렉트
-	}
+//	// 로그인 처리 (POST 요청)
+//	@PostMapping("login")
+//	public String login(MemberVO memberVO, HttpSession session)throws Exception {
+//		memberVO = memberService.detail(memberVO); // 로그인 처리
+//		
+//		// 로그인 성공 시 세션에 사용자 정보 저장
+//		if(memberVO != null) {
+//			session.setAttribute("member", memberVO);
+//		}
+//		
+//		
+//		return "redirect:../"; // 로그인 성공 후 홈 페이지로 리다이렉트
+//	}
 	
 	// 로그아웃 처리 (GET 요청)
 	//logout

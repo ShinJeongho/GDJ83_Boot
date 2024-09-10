@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>Index Page</h1>
-	<img alt="" src="/images/IMG_6018.jpg">
+	<img alt="" src="/images/6b52dc708f5bc655c74c42c4a9594afafd815a29.gif">
 	
 	<spring:message code="hello"></spring:message>
 	<spring:message code="hello2" text="기본값"></spring:message>

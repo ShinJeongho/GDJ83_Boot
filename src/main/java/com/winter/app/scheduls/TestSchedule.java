@@ -18,7 +18,7 @@ public class TestSchedule {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
-	@Scheduled(fixedDelayString = "1000", initialDelay = 2000)
+	//@Scheduled(fixedDelayString = "1000", initialDelay = 2000)
 	public void test1() throws Exception {
 		//실행 후 종류 까지 약 2초가 걸린다
 		log.error("Schedule Test");

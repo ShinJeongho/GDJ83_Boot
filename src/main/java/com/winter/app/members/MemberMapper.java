@@ -13,5 +13,7 @@ public interface MemberMapper {
 	// 회원 역할 추가 메서드
 	public int addRole(Map<String, Object> map) throws Exception;
 	
+	public int pwUpdate(MemberVO memberVO)throws Exception;
+	
 	
 }
