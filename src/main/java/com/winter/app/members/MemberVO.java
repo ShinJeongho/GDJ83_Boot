@@ -25,7 +25,7 @@ public class MemberVO implements UserDetails{
 	@NotBlank(groups = {MemberAddGroup.class, MemberUpdateGroup.class})
 	private String username;
 	
-	@Pattern(groups = {MemberAddGroup.class}, regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*\\\\W)(?=\\\\S+$).{6,12}")
+	//@Pattern(groups = {MemberAddGroup.class}, regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*\\\\W)(?=\\\\S+$).{6,12}")
 	@NotBlank(groups = {MemberAddGroup.class})
 	private String password;
 	
@@ -72,11 +72,11 @@ public class MemberVO implements UserDetails{
 		return true;
 	}
 	
-	public boolean isEnabled() {
-		// 계정 사용 여부 
-		// true     : 계정 활성화(계정 사용 가능)
-		// false    : 계정 비활성화 (계정 사용 불가, 로그인 안됨)
-		return true;
-	}
+//	public boolean isEnabled() {
+//		// 계정 사용 여부 
+//		// true     : 계정 활성화(계정 사용 가능)
+//		// false    : 계정 비활성화 (계정 사용 불가, 로그인 안됨)
+//		return true;
+//	}
 	
 }

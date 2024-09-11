@@ -14,25 +14,14 @@ import org.springframework.validation.BindingResult;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-public class MemberService implements UserDetailsService{
+public class MemberService{
 	@Autowired
 	private MemberMapper memberMapper; // 회원 Mapper 주입\\
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		MemberVO memberVO = new MemberVO();
-		memberVO.setUsername(username);
-		try {
-			memberVO= memberMapper.detail(memberVO);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return memberVO;
-	}
+	
 	
 	//검증메서드
 	public boolean memberValidate(MemberVO memberVO, BindingResult bindingResult) throws Exception {
