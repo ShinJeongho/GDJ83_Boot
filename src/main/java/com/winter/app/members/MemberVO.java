@@ -4,10 +4,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.winter.app.validate.MemberAddGroup;
 import com.winter.app.validate.MemberUpdateGroup;
@@ -20,7 +22,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data // Lombok을 사용해 getter, setter, toString, equals 등을 자동 생성
-public class MemberVO implements UserDetails{
+public class MemberVO implements UserDetails, OAuth2User{
 	
 	@NotBlank(groups = {MemberAddGroup.class, MemberUpdateGroup.class})
 	private String username;
@@ -39,6 +41,16 @@ public class MemberVO implements UserDetails{
 	private Date birth;
 	private boolean enabled; // 계정 활성화 여부
 	private List<RoleVO> vos;  // 회원이 가진 역할 목록 (권한)
+	private Map<String,Object> attributes; //OAuth2User , token 정보 저장
+	
+	//Oaut2user
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return this.attributes;
+	}
+	
+	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

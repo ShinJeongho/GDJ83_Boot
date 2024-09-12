@@ -19,6 +19,8 @@
 	
 	<sec:authorize access="!isAuthenticated()">
 		<h1>Login 하기 전</h1>
+		<a href="/member/Login">Login</a>
+		<a href="/oauth2/authorization/kakao?prompt=login">KaKao Login</a>
 	</sec:authorize>
 	
 	<sec:authorize access="isAuthenticated()">

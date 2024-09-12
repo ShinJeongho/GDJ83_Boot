@@ -88,6 +88,7 @@ public class SecurityConfig {
 								logout
 								//.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) //로그아웃url 지정
 								.logoutUrl("/member/logout") //로그아웃 url 지정
+								.logoutSuccessHandler(null)
 								.logoutSuccessUrl("/") //성공시 url
 								.invalidateHttpSession(true)//true 세션 소멸 false 면 세션 만료 x
 								//.deleteCookies("") //쿠키삭제 
@@ -120,7 +121,14 @@ public class SecurityConfig {
 									.expiredUrl("/member/check")
 									
 				)
-				
+				//소셜 로그인 항목
+				.oauth2Login(
+						oauth2 ->
+							oauth2.userInfoEndpoint(
+										user -> user.userService(memberUserService)
+									)
+				)
+							
 				
 				
 		;
