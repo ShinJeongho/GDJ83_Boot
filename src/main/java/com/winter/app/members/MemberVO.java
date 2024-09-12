@@ -42,6 +42,9 @@ public class MemberVO implements UserDetails, OAuth2User{
 	private boolean enabled; // 계정 활성화 여부
 	private List<RoleVO> vos;  // 회원이 가진 역할 목록 (권한)
 	private Map<String,Object> attributes; //OAuth2User , token 정보 저장
+	private String accessToken;
+	
+	private String sns;
 	
 	//Oaut2user
 	@Override

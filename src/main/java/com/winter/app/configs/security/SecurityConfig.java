@@ -23,6 +23,8 @@ public class SecurityConfig {
 	
 	@Autowired
 	private SecurityLoginFailHandler failHandler;
+	@Autowired
+	private SecurityLogoutSuccessHandler logoutSuccessHandler;
 	
 	@Autowired
 	private MemberUserService memberUserService;
@@ -88,8 +90,8 @@ public class SecurityConfig {
 								logout
 								//.logoutRequestMatcher(new AntPathRequestMatcher("/member/logout")) //로그아웃url 지정
 								.logoutUrl("/member/logout") //로그아웃 url 지정
-								.logoutSuccessHandler(null)
-								.logoutSuccessUrl("/") //성공시 url
+								.logoutSuccessHandler(logoutSuccessHandler)
+								//.logoutSuccessUrl("/") //성공시 url
 								.invalidateHttpSession(true)//true 세션 소멸 false 면 세션 만료 x
 								//.deleteCookies("") //쿠키삭제 
 				)
